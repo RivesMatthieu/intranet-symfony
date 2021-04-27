@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Accueil' %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <h1>Clients</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+           <h2>Seo: </h2>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Site</th>
+                    <th scope="col">Url</th>
+                    <th scope="col">Seo</th>
+                    <th scope="col">Accès</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for clients in client %}
+                <tr>
+                    <th scope="row"><a href="{{ path('client.show', {id: clients.id, slug: clients.slug}) }}">{{ clients.site }}</a></th>
+                    <td><a href="{{ clients.url }}">{{ clients.url }}</td>
+                    <td>{{ clients.seo }}</td>
+                    <td>{{ clients.adminAcces }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
