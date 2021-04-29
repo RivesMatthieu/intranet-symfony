@@ -36,6 +36,11 @@ class Clients
         1 => 'Oui'
     ];
 
+    const HACK = [
+        0 => 'Non',
+        1 => 'Oui'
+    ];
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -84,22 +89,22 @@ class Clients
     private $Telephone;
 
     /**
-     * @ORM\Column(type="boolean", options={"default": false})
+     * @ORM\Column(type="integer")
      */
     private $Uniweb;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer")
      */
     private $TMA;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer")
      */
     private $Seo;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer")
      */
     private $Sea;
 
@@ -119,9 +124,9 @@ class Clients
     private $AdminAcces;
 
     /**
-     * @ORM\Column(type="boolean", options={"default": false})
+     * @ORM\Column(type="integer")
      */
-    private $Hack = false;
+    private $Hack;
 
     public function getId(): ?int
     {

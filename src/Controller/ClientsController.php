@@ -27,31 +27,16 @@ class ClientsController extends AbstractController {
         $this->repository = $repository;
         $this->em = $em;
     }
-
-    /**
-     * @Route("/clients", name="client.index")
-     * @return Response
-     */
-    public function index(): Response
-    {
-        $client = $this->repository->findSeo();
-        dump($client);
-        dump($this->repository);
-        $this->em->flush();
-        return $this->render('admin/clients.html.twig', [
-            'client' => $client
-        ]);
-    }
-
-    /**
-     * @Route( "/clients/{slug}-{id}", name="client.show", requirements={"slug": "[a-z0-9\-]*"})
-     * @return Response
-     */
-    public function show($slug, $id): Response
-    {
-        $client = $this->repository->find($id);
-        return $this->render('admin/show.html.twig', [
-            'clients' => $client
-        ]);
-    }
+//
+//    /**
+//     * @Route("/clients", name="client.index")
+//     * @return Response
+//     */
+//    public function index(): Response
+//    {
+//        $client = $this->repository->findAll();
+//        return $this->render('admin/clients.html.twig', [
+//            'client' => $client
+//        ]);
+//    }
 }

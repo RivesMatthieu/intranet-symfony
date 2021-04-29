@@ -1,0 +1,30 @@
+{{ form_start(form) }}
+    <div class="row">
+        <div class="col-md-4">{{ form_row(form.Site) }}</div>
+        <div class="col-md-2">{{ form_row(form.Actif) }}</div>
+        <div class="col-md-2">{{ form_row(form.Seo) }}</div>
+        <div class="col-md-2">{{ form_row(form.Sea) }}</div>
+        <div class="col-md-2">{{ form_row(form.TMA) }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">{{ form_row(form.Url) }}</div>
+        <div class="col-md-4">{{ form_row(form.AdminUrl) }}</div>
+        <div class="col-md-4">{{ form_row(form.AdminAcces) }}</div>
+    </div>
+    <div class="row">
+        <div class="col-6 col-md-2">{{ form_row(form.Societe) }}</div>
+        <div class="col-6 col-md-2">{{ form_row(form.Contact) }}</div>
+        <div class="col-6 col-md-2">{{ form_row(form.Role) }}</div>
+        <div class="col-6 col-md-3">{{ form_row(form.Email) }}</div>
+        <div class="col-6 col-md-3">{{ form_row(form.Telephone) }}</div>
+    </div>
+    <div class="row">
+        <div class="col-6 col-md-2">{{ form_row(form.Uniweb) }}</div>
+        <div class="col-6 col-md-3">{{ form_row(form.Cms) }}</div>
+        <div class="col-6 col-md-2">{{ form_row(form.Hack) }}</div>
+        <div class="col-6 col-md-3">Date Hack</div>
+    </div>
+
+    {{ form_widget(form) }}
+    <button class="btn btn-primary">{{  button|default('Éditer') }}</button>
+{{ form_end(form) }}

@@ -28,7 +28,6 @@ class ClientsRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('p')
             ->Where('p.Seo = true')
-            ->setMaxResults(5)
             ->getQuery()
             ->getResult()
         ;
