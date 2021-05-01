@@ -3,19 +3,61 @@
 {% block title 'Gérer les clients' %}
 
 {% block body %}
-    <div class="container-fluid mt-4">
-        {% for message in app.flashes('succes') %}
-            <div class="alert alert-success">
-                {{ message }}
-            </div>
-        {% endfor %}
-        <div class="row px-5 justify-content-between align-items-center">
-            <h1>Bases clients</h1>
-            <a href="{{ path('client.new') }}" class="btn btn-info">Ajouter un site</a>
+    {% for message in app.flashes('succes') %}
+        <div class="alert alert-success">
+            {{ message }}
         </div>
-
-        <table class="table table-striped">
-            <thead>
+    {% endfor %}
+    <div class="container-fluid">
+        <div class="card shadow m-4">
+            <div class="card-header py-3">
+                <div class="row px-5 justify-content-between align-items-center">
+                        <h6 class="m-0 font-weight-bold text-primary">Bases clients</h6>
+                    <a href="{{ path('client.new') }}" class="btn btn-info">Ajouter un site</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered dataTable table-striped" >
+                <thead>
+                    <tr>
+                        <th>Site</th>
+                        <th>Seo</th>
+                        <th>Sea</th>
+                        <th>Tma</th>
+                        <th>Url</th>
+                        <th>Url Admin</th>
+                        <th>Accès</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for clients in client %}
+                    <tr>
+                        <td class="font-weight-bold"><a href="{{ path('client.show', {id: clients.id, slug: clients.slug}) }}">{{ clients.site }}</a></th></td>
+                        <td class="{% if clients.Seo %}bg-success{% else %}bg-danger{% endif %} text-light text-center">
+                            {% if clients.Seo %} Oui {% else %} Non {% endif %}
+                        </td>
+                        <td class="{% if clients.Sea %}bg-success{% else %}bg-danger{% endif %} text-light text-center">
+                            {% if clients.Sea %} Oui {% else %} Non {% endif %}
+                        </td>
+                        <td class="{% if clients.Tma %}bg-success{% else %}bg-danger{% endif %} text-light text-center">
+                            {% if clients.Tma %} Oui {% else %} Non {% endif %}
+                        </td>
+                        <td><a href="{{ clients.Url }}">{{ clients.Url }}</a></td>
+                        <td><a href="{{ clients.AdminUrl }}">{{ clients.AdminUrl }}</a></td>
+                        <td>{{ clients.AdminAcces }}</td>
+                        <td>
+                            <a href="{{ path('client.show', {id: clients.id, slug: clients.slug}) }}" class="btn btn-primary">Détails</a>
+                            <a href="{{ path('client.edit', {id: clients.id}) }}" class="btn btn-secondary">Editer</a>
+                            <form method="POST" action="{{ path('client.delete', {id: clients.id}) }}" class="d-inline" onsubmit="return confirm('Supprimer ?')">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button class="btn btn-danger">Supprimer</button>
+                            </form>
+                        </td>
+                    </td>
+                {% endfor %}
+                </tbody>
+                <tfoot>
                 <tr>
                     <th>Site</th>
                     <th>Seo</th>
@@ -26,29 +68,10 @@
                     <th>Accès</th>
                     <th>Action</th>
                 </tr>
-            </thead>
-            <tbody>
-            {% for clients in client %}
-                <tr>
-                    <td class="font-weight-bold"><a href="{{ path('client.show', {id: clients.id, slug: clients.slug}) }}">{{ clients.site }}</a></th></td>
-                    <td>{{ clients.Seo }}</td>
-                    <td>{{ clients.Sea }}</td>
-                    <td>{{ clients.Tma }}</td>
-                    <td><a href="{{ clients.Url }}">{{ clients.Url }}</a></td>
-                    <td><a href="{{ clients.AdminUrl }}">{{ clients.AdminUrl }}</a></td>
-                    <td>{{ clients.AdminAcces }}</td>
-                    <td>
-                        <a href="{{ path('client.show', {id: clients.id, slug: clients.slug}) }}" class="btn btn-primary">Détails</a>
-                        <a href="{{ path('client.edit', {id: clients.id}) }}" class="btn btn-secondary">Editer</a>
-                        <form method="POST" action="{{ path('client.delete', {id: clients.id}) }}" class="d-inline" onsubmit="return confirm('Supprimer ?')">
-                            <input type="hidden" name="_method" value="DELETE">
-                            <button class="btn btn-danger">Supprimer</button>
-                        </form>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                </tfoot>
+            </table>
+            </div>
+        </div>
     </div>
 
 {% endblock %}

@@ -3,9 +3,13 @@
 {% block title 'Gérer les biens' %}
 
 {% block body %}
-    <div class="container mt-4">
-        <h1>Modifier un client</h1>
-        {{ include ('admin/_form.html.twig', {form: form, button: 'Éditer'}) }}
+    <div class="card shadow m-4">
+        <div class="card-header">
+            <h4 class="m-0 font-weight-bold text-primary">Modifier un client</h4>
+        </div>
+        <div class="card-body">
+            {{ include ('admin/_form.html.twig', {form: form, button: 'Éditer'}) }}
+        </div>
     </div>
 
 {% endblock %}

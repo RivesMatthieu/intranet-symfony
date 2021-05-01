@@ -3,9 +3,12 @@
 {% block title 'Gérer les biens' %}
 
 {% block body %}
-    <div class="container mt-4">
-        <h1>Ajout d'un nouveau client</h1>
-       {{ include ('admin/_form.html.twig', {form: form, button: 'Ajouter'}) }}
+    <div class="card shadow m-4">
+        <div class="card-header">
+            <h4 class="m-0 font-weight-bold text-primary">Ajout d'un nouveau client</h4>
+        </div>
+        <div class="card-body">
+            {{ include ('admin/_form.html.twig', {form: form, button: 'Ajouter'}) }}
+        </div>
     </div>
-
 {% endblock %}

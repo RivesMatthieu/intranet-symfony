@@ -53,6 +53,8 @@ class AdminClientsController extends AbstractController {
         $tma = $client->getTma();
         if( $seo == 1 || $sea == 1 || $tma == 1 )
             $actif = true;
+        else
+            $actif = false;
         return $this->render('admin/show.html.twig', [
             'clients' => $client,
             'actif'   => $actif
